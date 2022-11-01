@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "de47cc1e-db48-401c-a15e-645b9d381cff",
+		"name": "Purchase Flow Example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "1627676-de47cc1e-db48-401c-a15e-645b9d381cff"
+	},
+	"item": [
+		{
+			"name": "System Option",
+			"id": "9e050494-ed32-4243-b53f-2ab3f41521b3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "apikey",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"header\": {\n        \"ver\": 1,\n        \"src_sys_type\": 2,\n        \"src_sys_name\": \"test\",\n        \"archtics_version\": \"V999\"\n    },\n    \"command1\": {\n        \"cmd\": \"system_options\",\n        \"ref\": \"abcd1234\",\n        \"uid\": \"{{uid}}\",\n        \"dsn\": \"{{dsn}}\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{sth-buy}}",
+					"host": [
+						"{{sth-buy}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "event_details",
+			"id": "71897003-e7bf-4aa4-83dc-a054d6710d62",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "apikey",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"header\": {\r\n\"ver\": 1,\r\n\"src_sys_type\": 2,\r\n\"src_sys_name\": \"testing\",\r\n\"archtics_version\": \"V999\"\r\n},\r\n\"command1\": {\r\n\"cmd\": \"event_details\",\r\n\"uid\": \"{{uid}}\",\r\n\"dsn\": \"{{dsn}}\",\r\n\"last_update\": \"2016-03-12 00:00:00.001\",\r\n\"event_filter_type\":\"L\",\r\n\"event_filter\":\"FB08\"\r\n}\r\n}\r\n\r\n"
+				},
+				"url": {
+					"raw": "{{sth-buy}}",
+					"host": [
+						"{{sth-buy}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "event_price_info",
+			"id": "d9b5024c-65c0-485d-9c67-d30c6cf3d904",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "apikey",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"header\": {\r\n\"ver\": 1,\r\n\"src_sys_type\": 2,\r\n\"src_sys_name\": \"testing\",\r\n\"archtics_version\": \"v999\"\r\n},\r\n\"command1\": {\r\n\"cmd\": \"event_price_info\",\r\n\"ref\": \"222c\",\r\n\"uid\": \"{{uid}}\",\r\n\"dsn\": \"{{dsn}}\",\r\n\"event_name\": \"GAME02\",\r\n\"hold_classes\": [\r\n\t\"OPEN\",\r\n\t\"HOLD_01\",\r\n\t\"HOLD_02\"\r\n]\r\n}\r\n}"
+				},
+				"url": {
+					"raw": "{{sth-buy}}",
+					"host": [
+						"{{sth-buy}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_avail_seats",
+			"id": "1bf275f2-30e8-4315-b414-131dd27d9ea9",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "apikey",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"header\":{\r\n\"ver\":1,\r\n\"src_sys_type\":2,\r\n\"src_sys_name\":\"testing\",\r\n\"archtics_version\":\"v999\"\r\n},\r\n\"command1\":{\r\n\"cmd\":\"get_avail_seats\",\r\n\"ref\":\"no delimiters need apply\",\r\n\"uid\":\"{{uid}}\",\r\n\"dsn\":\"{{dsn}}\",\r\n\"manifest_retrieval_date\":\"2011-10-02 14:22:43\",\r\n\"summary_flag\":\"N\",\r\n\"sections\":\"[107]\",\r\n\"account_number\":6666,\r\n\"session_id\":\"11223344\",\r\n\"event_name\":\"GAME39\",\r\n\"call_reason\":\"BY\"\r\n}\r\n}"
+				},
+				"url": {
+					"raw": "{{sth-buy}}",
+					"host": [
+						"{{sth-buy}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "seats_hold",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2724f1b3-e5c4-4519-b11f-79237824201e",
+						"exec": [
+							"var bodydata = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"order_num\",bodydata.command1.order_num_out);",
+							"",
+							"var bodydata = JSON.parse(responseBody)",
+							"pm.collectionVariables.set(\"order_line_item\",bodydata.command1.seats[0].order_line_item);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "20c56ff3-084c-4b65-bd42-703042b79020",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "apikey",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"header\": {\r\n        \"ver\": 1,\r\n        \"src_sys_type\": 2,\r\n        \"Archtics_version\": \"V999\",\r\n        \"src_sys_name\": \"automation\"\r\n    },\r\n    \"command1\": {\r\n        \"cmd\": \"seats_hold\",\r\n        \"ref\": \"1AB2C3\",\r\n        \"uid\": \"{{uid}}\",\r\n        \"dsn\": \"{{dsn}}\",\r\n        \"site_name\": \"chantilly\",\r\n        \"event_name\": \"GAME39\",\r\n        \"price_code\": \"A\",\r\n        \"ticket_type\": [\r\n            {\r\n                \"ticket_type_code\": \"_A\",\r\n                \"num_seats\": 2\r\n            }\r\n        ],\r\n        \"count\": 1,\r\n        \"hold_classes\": [\r\n            \"OPEN\",\r\n            \"INET-HOLD\"\r\n        ]\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{sth-buy}}",
+					"host": [
+						"{{sth-buy}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "shopping_cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "75c8b211-c646-4f6e-969c-5816cb22bbe2",
+						"exec": [
+							"var bodydata = JSON.parse(responseBody)",
+							"pm.collectionVariables.set(\"to_be_charged_amount\",bodydata.command1.seats[0].to_be_charged_amount);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "e8f04d00-ff44-4199-8dd6-c1bbdd7d6aac",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "apikey",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"header\": {\r\n        \"ver\": 1,\r\n        \"src_sys_type\": 2,\r\n        \"src_sys_name\": \"test\",\r\n        \"archtics_version\": \"V999\"\r\n    },\r\n    \"command1\": {\r\n        \"cmd\": \"shopping_cart\",\r\n        \"ref\": \"aaabbb\",\r\n        \"uid\": \"{{uid}}\",\r\n        \"dsn\": \"{{dsn}}\",\r\n        \"site_name\": \"chantilly\",\r\n        \"acct_id\":333,\r\n        \"order_num\": {{order_num}},\r\n        \"session_id\":\"area51\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{sth-buy}}",
+					"host": [
+						"{{sth-buy}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "check_out",
+			"id": "6444f2d6-7a0f-485f-807e-b7647a4cca5f",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "apikey",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"header\": {\r\n        \"ver\": 1,\r\n        \"src_sys_type\": 2,\r\n        \"src_sys_name\": \"test\",\r\n        \"archtics_version\": \"V999\"\r\n    },\r\n    \"command1\": {\r\n        \"cmd\": \"check_out\",\r\n        \"ref\": \"aaabbb\",\r\n        \"uid\": \"{{uid}}\",\r\n        \"dsn\": \"{{dsn}}\",\r\n        \"site_name\": \"chantilly\",\r\n        \"acct_id\":333,\r\n        \"calculate_credit\":\"Y\",\r\n        \"order_num\": {{order_num}},\r\n        \"session_id\":\"area51\",\r\n        \"order_line_item\": [\r\n            1\r\n        ]\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{sth-buy}}",
+					"host": [
+						"{{sth-buy}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "payment_request",
+			"id": "8ebc07c8-0427-49b0-a5af-6fee93ba6305",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "apikey",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"header\": {\r\n        \"ver\": 1,\r\n        \"src_sys_type\": 2,\r\n        \"src_sys_name\": \"Test\",\r\n        \"archtics_version\": \"V999\"\r\n    },\r\n    \"command1\": {\r\n        \"cmd\": \"payment_request\",\r\n        \"ref\": \"7944a0d8-5edb-47d2-b328-6d6fffb2eb8f\",\r\n        \"uid\": \"{{uid}}\",\r\n        \"dsn\": \"{{dsn}}\",\r\n        \"site_name\": \"chantilly\",\r\n        \"acct_id\": 333,\r\n        \"order_num\": {{order_num}},\r\n        \"mop\": [\r\n            {\r\n                \"auth_mode\": \"O\",\r\n                \"amount\": {{to_be_charged_amount}},\r\n                \"pmt_type\": \"CH\"\r\n            }\r\n        ],\r\n        \"cart_items\": [\r\n            {\r\n                \"order_line_item\": {{order_line_item}},\r\n                \"dm_code\": \"TF\"\r\n            }\r\n        ]\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{sth-buy}}",
+					"host": [
+						"{{sth-buy}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "customer_add",
+			"id": "7d59c08b-268b-4931-83fc-414b7d377887",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "apikey",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"header\": {\r\n        \"ver\": 1,\r\n        \"src_sys_type\": 2,\r\n        \"src_sys_name\": \"testing\",\r\n        \"archtics_version\": \"V999\"\r\n    },\r\n    \"command1\": {\r\n        \"cmd\": \"Customer_Add\",\r\n        \"ref\": \"112233\",\r\n        \"uid\": \"{{uid}}\",\r\n        \"dsn\": \"{{dsn}}\",\r\n        \"site_name\": \"integ3\",\r\n        \"customer\": {\r\n            \"name_last\": \"Eagleton\",\r\n            \"email\": \"eagleton@mailinator.com\"\r\n        }\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{sth-buy}}",
+					"host": [
+						"{{sth-buy}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cust_query",
+			"id": "9c290652-12e9-4b8b-b7fb-670e6076c702",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "apikey",
+						"value": "{{apikey}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"header\": {\r\n        \"ver\": 1,\r\n        \"src_sys_type\": 2,\r\n        \"src_sys_name\": \"test\",\r\n        \"archtics_version\": \"V999\"\r\n    },\r\n    \"command1\": {\r\n        \"cmd\": \"Customer_Query\",\r\n        \"ref\": \"steve\",\r\n        \"uid\": \"{{uid}}\",\r\n        \"dsn\": \"{{dsn}}\",\r\n        \"site_name\": \"vanilla\",\r\n        \"email\": \"4321john.primary.email@mailinator.com\",\r\n        \"call_reason\": \"S\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{sth-buy}}",
+					"host": [
+						"{{sth-buy}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "47eca6ba-a586-40b1-b91e-dec7d50f3d3e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3d695a66-94c7-4e9e-8a83-e54c8a6b36be",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "c342094e-a499-4f75-893d-d1004deb8f9d",
+			"key": "dsn",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "00a9f64d-efea-4e40-a8fc-bbe94fd9ccb2",
+			"key": "apikey",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "99aa123f-9810-4e5f-97a2-bd7b842f9904",
+			"key": "uid",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "0f6a36fc-d05c-4755-a7be-ba5eb583d8d8",
+			"key": "order_num",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "9a1b6926-945a-4951-ac9c-957bb88bee41",
+			"key": "order_line_item",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "9d72a450-201a-480e-9376-af503fe8f524",
+			"key": "to_be_charged_amount",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
